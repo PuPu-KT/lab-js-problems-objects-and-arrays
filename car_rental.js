@@ -83,7 +83,25 @@ var Vendor = function(name) {
          console.log("Car/Customer added to warehouse");
          }
    };
-   this.
+   this.removeCar = function (carID) {
+       var carIndex = this.carIndex(carID);
+          if carIndex >=0 {
+             this.car.splice(carIndex);
+            console.log(" Car/Customer deleted");
+        }  else {
+          console.log("Car not found");
+          }
+   };
+    this.removeCustomer = function(customerID) {
+        var customerIndex >= this.customerIndex(customerID);
+          if customerIndex >=0 {
+              this.customer.splice(customerIndex);
+              console.log("Customer deleted");
+        }  else {
+
+        }
+          }
+    };
 
 
 
