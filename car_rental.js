@@ -1,18 +1,54 @@
 // Customer Object
 var Customer = function (customerInfo) {
   // ** your code here**
+this.id = customerInfo.id;
+this.name = customerInfo.name;
+this.carRented = {};
 };
-
+/*  var customer1 = new Customer(001, 'gogo', null)
+    console.log(customer1.name); //for testing  */
 // Car Object
 var Car = function (carInfo) {
   // ** your code here**
-};
+  this.id = carInfo.id;
+  this.producer = carInfo.producer;
+  this.model = carInfo.model;
+  this.rentalPriceperday = carInfo.rentalPriceperday;
+  this.available = true
+  this.customer = {};
+  this.rentalDuration = 0;
+/* - The `quotePrice` function takes a variable call `rentalDuration`
+then returns the `rentalPrice * rentalDuration` */
+  this.quotePrice = function(rentalDuration) {
+    return rentalDuration * rentalprice;
+   };
+
+  this.reserve = function (customer, rentalDuration) {
+  if(this.availible) {
+       this.availible = false;
+       this.customer = customer;
+       this.rentalDuration = rentalDuration;
+     return true;
+     } else {
+         return false }
+   };
+   this.return = function () {
+     if (this.availible) {
+       return "Sorry, this car have already been returned";
+     } else  {
+       this.availible = true;
+       this.customer = {};
+       this.rentalDuration = {};
+     }
+   };
+
 
 // Vendor Object
 var Vendor = function(name) {
   this.name = name;
   this.cars = [];
   this.customers = [];
+
 
   this.findCarIndex = function (carID) {
     return this.cars.findIndex(function(car){
@@ -26,6 +62,7 @@ var Vendor = function(name) {
     });
   };
 
+
   this.getCar = function (carID) {
     return this.cars.find(function(car){
       return car.id === carID ? true : false ;
@@ -38,7 +75,26 @@ var Vendor = function(name) {
     });
   };
 
+
+
   // **your code here**
+ this.reTurnCar = function (customerID) {
+  var customer = this.getCustomer(customerID);
+  if (customer) {
+    customer.carRented.return();
+    customer.carRented = {};
+    console.log( "Thank you forusing our service");
+  } else {
+    console.log("Please provide a valid customer ID");
+  }
+};  // *test on k
+
+this.totalRevenue = function () {
+  return this.cars.reduce(function(prevSum, currCar){
+    console.log(prevSum, currCar);
+    return prevSum + (currCar.rentalDuration * currCar.rentalPricePerDay);
+  }, 0);
+};
 };
 
 
