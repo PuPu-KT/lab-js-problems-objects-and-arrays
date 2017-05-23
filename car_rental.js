@@ -74,6 +74,17 @@ var Vendor = function(name) {
       return customer.id === customerID ? true : false ;
     });
   };
+   this.addCar = fuction (carObj) {
+     var car = this.getcar(carObj);
+       if (car) {
+         console.log("ID already exists");
+      } else  {
+           this.car.push(carObj);
+         console.log("Car/Customer added to warehouse");
+         }
+   };
+   this.
+
 
 
 
